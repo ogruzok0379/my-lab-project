@@ -1,0 +1,3 @@
+feature B
+feature B extended
+feature B final
