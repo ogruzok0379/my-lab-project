@@ -17,7 +17,7 @@ jobs:
         run: ls -la
 
       - name: Check README exists
-        run: test -f README.md && echo "README.md found"
+        run: test -f README.txt && echo "README.txt found"
 
       - name: Check no real secrets (placeholder for TruffleHog later)
         run: echo "CI passed"
