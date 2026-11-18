@@ -31,5 +31,5 @@ jobs:
             ghcr.io/trufflesecurity/trufflehog:latest \
             filesystem /p \
             --results=verified,unknown,unverified \
-            --exclude-paths=.trufflehogignore \
+            --exclude-paths=/p/.trufflehogignore
             --fail || exit 1
