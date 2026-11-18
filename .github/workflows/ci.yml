@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: List files
         run: ls -la
@@ -19,12 +21,7 @@ jobs:
       - name: Check README exists
         run: test -f README.md && echo "README.md found"
 
-      - name: Check no real secrets (placeholder for TruffleHog later)
-        run: echo "CI passed"
       - name: TruffleHog Secret Scan
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
-
