@@ -1,4 +1,5 @@
 
+cat > .github/workflows/ci.yml << 'EOF'
 name: CI
 
 on:
@@ -22,8 +23,11 @@ jobs:
       - name: Check README exists
         run: test -f README.md && echo "README.md found"
 
-      - name: TruffleHog Secret Scan
-        uses: trufflesecurity/trufflehog@main
-        with:
-          path: ./
-          extra_args: --no-verification
+      - name: TruffleHog Secret Scan (filesystem)
+        run: |
+          docker run --rm -v "$PWD:/p" \
+            ghcr.io/trufflesecurity/trufflehog:latest \
+            filesystem /p \
+            --results=verified,unknown,unverified \
+            --fail
+EOF
