@@ -2,4 +2,4 @@
 line 2
 line 3
 Feature C: line from feature branch
-Main: conflicting change
+Main: conflicting changedsdasd
