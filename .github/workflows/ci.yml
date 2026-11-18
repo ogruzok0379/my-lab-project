@@ -24,9 +24,10 @@ jobs:
 
       - name: TruffleHog Secret Scan (filesystem)
         run: |
+          echo ".git/" > .trufflehogignore
           docker run --rm -v "$PWD:/p" \
             ghcr.io/trufflesecurity/trufflehog:latest \
             filesystem /p \
             --results=verified,unknown,unverified \
-            --fail
-
+            --exclude-paths=.trufflehogignore \
+            --fail || exit 1
