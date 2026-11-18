@@ -25,6 +25,4 @@ jobs:
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ""
-          head: ${{ github.ref_name }}
           extra_args: --no-verification
