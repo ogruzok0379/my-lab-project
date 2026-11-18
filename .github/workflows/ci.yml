@@ -1,5 +1,4 @@
 
-cat > .github/workflows/ci.yml << 'EOF'
 name: CI
 
 on:
@@ -30,4 +29,4 @@ jobs:
             filesystem /p \
             --results=verified,unknown,unverified \
             --fail
-EOF
+
