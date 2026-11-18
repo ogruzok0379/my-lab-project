@@ -26,6 +26,4 @@ jobs:
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ""
-          head: HEAD
           extra_args: --no-verification
