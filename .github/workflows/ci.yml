@@ -22,11 +22,14 @@ jobs:
       - name: Check README exists
         run: test -f README.md && echo "README.md found"
 
+      - name: Debug - show test-secret.txt
+        run: cat test-secret.txt || echo "test-secret.txt NOT FOUND"
+
       - name: TruffleHog Secret Scan (filesystem)
         run: |
           docker run --rm -v "$PWD:/p" \
             ghcr.io/trufflesecurity/trufflehog:latest \
             filesystem /p \
             --results=verified,unknown,unverified \
-            --fail
-
+            --exclude-globs=".git/**" \
+            --fail || exit 1
